@@ -1,4 +1,5 @@
 import javax.swing.text.html.Option;
+import java.time.temporal.IsoFields;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -20,10 +21,16 @@ public class FileServer {
 
     public void userInterface() {
         Scanner scanner = new Scanner(System.in);
-        String[] userInput = scanner.nextLine().split("\\s");
         while (true) {
-            switch (userInput[0]) {
-
+            String[] userInput = scanner.nextLine().split("\\s");
+            String command = userInput[0];
+            String fileName = userInput[1];
+            switch (command) {
+                case "add" -> add(fileName);
+                case "get" -> get(fileName);
+                case "delete" -> deleted(fileName);
+                case "exit" -> System.exit(0);
+                default -> System.out.println("Unknown command");
             }
         }
     }
@@ -32,26 +39,32 @@ public class FileServer {
         boolean isValidFileName = setValidName.contains(fileName);
 
         if (isValidFileName && freeSpaseOnUserStorage > 0) {
+            System.out.printf("The file %s added successfully%n\n", fileName);
             return setUserStorage.add(fileName);
         } else {
+            System.out.printf("Cannot add the file %s\n", fileName);
             return false;
         }
     }
 
-    private String get(String fileName) {
+    private boolean get(String fileName) {
         boolean isFileSuccess = setUserStorage.contains(fileName);
         if (isFileSuccess) {
-            return fileName;
+            System.out.printf("The file %s was sent\n", fileName);
+            return true;
         } else {
-            return "not found";
+            System.out.printf("The file %s not found\n", fileName);
+            return false;
         }
     }
 
     private boolean deleted(String fileName) {
         boolean isFileSuccess = setUserStorage.contains(fileName);
         if (isFileSuccess) {
+            System.out.printf("The file %s was deleted\n", fileName);
             return setUserStorage.remove(fileName);
         } else {
+            System.out.printf("The file %s not found\n", fileName);
             return false;
         }
     }
