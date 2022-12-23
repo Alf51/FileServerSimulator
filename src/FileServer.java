@@ -21,7 +21,7 @@ public class FileServer {
 
     }
 
-    public boolean add(String fileName) {
+    private boolean add(String fileName) {
         boolean isValidFileName = setValidName.contains(fileName);
 
         if (isValidFileName && freeSpaseOnUserStorage > 0) {
@@ -31,7 +31,7 @@ public class FileServer {
         }
     }
 
-    public String get(String fileName) {
+    private String get(String fileName) {
         boolean isFileSuccess = setUserStorage.contains(fileName);
         if (isFileSuccess) {
             return fileName;
@@ -40,7 +40,7 @@ public class FileServer {
         }
     }
 
-    public boolean deleted(String fileName) {
+    private boolean deleted(String fileName) {
         boolean isFileSuccess = setUserStorage.contains(fileName);
         if (isFileSuccess) {
             return setUserStorage.remove(fileName);
