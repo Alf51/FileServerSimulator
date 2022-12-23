@@ -1,5 +1,6 @@
 import javax.swing.text.html.Option;
 import java.util.HashSet;
+import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -18,7 +19,13 @@ public class FileServer {
     }
 
     public void userInterface() {
+        Scanner scanner = new Scanner(System.in);
+        String[] userInput = scanner.nextLine().split("\\s");
+        while (true) {
+            switch (userInput[0]) {
 
+            }
+        }
     }
 
     private boolean add(String fileName) {
