@@ -1,3 +1,4 @@
+import javax.swing.text.html.Option;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -30,6 +31,14 @@ public class FileServer {
         }
     }
 
+    public String get(String fileName) {
+        boolean isFileSuccess = setUserStorage.contains(fileName);
+        if (isFileSuccess) {
+            return fileName;
+        } else {
+            return "not found";
+        }
+    }
 
     private Set<String> setDictionary(int sizeStorage) {
         return IntStream.rangeClosed(1, sizeStorage)
