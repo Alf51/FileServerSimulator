@@ -1,5 +1,3 @@
-import javax.swing.text.html.Option;
-import java.time.temporal.IsoFields;
 import java.util.HashSet;
 import java.util.Scanner;
 import java.util.Set;
@@ -8,8 +6,9 @@ import java.util.stream.IntStream;
 
 public class FileServer {
     private int maxSizeStorage;
-    private Set<String> setValidName = setDictionary(maxSizeStorage);
-    private Set<String> setUserStorage = new HashSet<>(10);
+    //TODO Fix ! size == 0;
+    private Set<String> setValidName;
+    private Set<String> setUserStorage = new HashSet<>(maxSizeStorage);
     private int freeSpaseOnUserStorage = maxSizeStorage;
 
     public FileServer(int maxSizeStorage) throws Exception {
@@ -17,6 +16,7 @@ public class FileServer {
             throw new Exception("Incorrect size");
         }
         this.maxSizeStorage = maxSizeStorage;
+        setValidName = setDictionary(maxSizeStorage);
     }
 
     public void userInterface() {
@@ -24,11 +24,10 @@ public class FileServer {
         while (true) {
             String[] userInput = scanner.nextLine().split("\\s");
             String command = userInput[0];
-            String fileName = userInput[1];
             switch (command) {
-                case "add" -> add(fileName);
-                case "get" -> get(fileName);
-                case "delete" -> deleted(fileName);
+                case "add" -> add(userInput[1]);
+                case "get" -> get(userInput[1]);
+                case "delete" -> deleted(userInput[1]);
                 case "exit" -> System.exit(0);
                 default -> System.out.println("Unknown command");
             }
