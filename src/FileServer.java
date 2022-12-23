@@ -40,6 +40,15 @@ public class FileServer {
         }
     }
 
+    public boolean deleted(String fileName) {
+        boolean isFileSuccess = setUserStorage.contains(fileName);
+        if (isFileSuccess) {
+            return setUserStorage.remove(fileName);
+        } else {
+            return false;
+        }
+    }
+
     private Set<String> setDictionary(int sizeStorage) {
         return IntStream.rangeClosed(1, sizeStorage)
                 .mapToObj(element -> "file" + element)
