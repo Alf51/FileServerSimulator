@@ -6,16 +6,16 @@ import java.util.stream.IntStream;
 
 public class FileServer {
     private int maxSizeStorage;
-    //TODO Fix ! size == 0;
-    private Set<String> setValidName;
-    private Set<String> setUserStorage = new HashSet<>(maxSizeStorage);
-    private int freeSpaseOnUserStorage = maxSizeStorage;
+    private final Set<String> setValidName;
+    private final Set<String> setUserStorage = new HashSet<>(maxSizeStorage);
+    private int freeSpaseOnUserStorage;
 
     public FileServer(int maxSizeStorage) throws Exception {
         if (maxSizeStorage < 1) {
             throw new Exception("Incorrect size");
         }
         this.maxSizeStorage = maxSizeStorage;
+        freeSpaseOnUserStorage = maxSizeStorage;
         setValidName = setDictionary(maxSizeStorage);
     }
 
@@ -36,9 +36,11 @@ public class FileServer {
 
     private boolean add(String fileName) {
         boolean isValidFileName = setValidName.contains(fileName);
+        boolean isContainInUserStorage = setUserStorage.contains(fileName);
 
-        if (isValidFileName && freeSpaseOnUserStorage > 0) {
+        if (isValidFileName && !isContainInUserStorage && freeSpaseOnUserStorage > 0) {
             System.out.printf("The file %s added successfully%n\n", fileName);
+            freeSpaseOnUserStorage--;
             return setUserStorage.add(fileName);
         } else {
             System.out.printf("Cannot add the file %s\n", fileName);
@@ -61,6 +63,7 @@ public class FileServer {
         boolean isFileSuccess = setUserStorage.contains(fileName);
         if (isFileSuccess) {
             System.out.printf("The file %s was deleted\n", fileName);
+            freeSpaseOnUserStorage++;
             return setUserStorage.remove(fileName);
         } else {
             System.out.printf("The file %s not found\n", fileName);
