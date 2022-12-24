@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9b597f01-f1b4-4c00-8ca3-8bccb3075605" name="Changes" comment="add fun">
+    <list default="true" id="9b597f01-f1b4-4c00-8ca3-8bccb3075605" name="Changes" comment="correct work all method">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FileServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/FileServer.java" afterDir="false" />
     </list>
@@ -122,7 +122,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671836360319</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="correct work all method">
+      <created>1671872261795</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1671872261795</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -144,6 +151,7 @@
     <MESSAGE value="started create userInterface method" />
     <MESSAGE value="add userInterface method" />
     <MESSAGE value="add fun" />
-    <option name="LAST_COMMIT_MESSAGE" value="add fun" />
+    <MESSAGE value="correct work all method" />
+    <option name="LAST_COMMIT_MESSAGE" value="correct work all method" />
   </component>
 </project>

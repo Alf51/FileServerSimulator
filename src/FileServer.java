@@ -5,9 +5,9 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class FileServer {
-    private int maxSizeStorage;
+    private int maxSizeStorage; //TODO нигде не используется
     private final Set<String> setValidName;
-    private final Set<String> setUserStorage = new HashSet<>(maxSizeStorage);
+    private final Set<String> setUserStorage = new HashSet<>();
     private int freeSpaseOnUserStorage;
 
     public FileServer(int maxSizeStorage) throws Exception {
@@ -48,6 +48,7 @@ public class FileServer {
         }
     }
 
+    //TODO мб возвращать Otion.isNull....
     private boolean get(String fileName) {
         boolean isFileSuccess = setUserStorage.contains(fileName);
         if (isFileSuccess) {
